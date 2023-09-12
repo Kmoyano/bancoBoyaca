@@ -16,13 +16,6 @@ CREATE TABLE `usuario` (
   PRIMARY KEY (`cedula`));
 
 -- -----------------------------------------------------
--- Modificar Tabla "usuario"
--- -----------------------------------------------------
-ALTER TABLE `usuario`
-	ADD column `id_municipio_usuario` INT,
-	ADD FOREIGN KEY (`id_municipio_usuario`) REFERENCES `municipio`(`id_municipio`);
-
--- -----------------------------------------------------
 -- Table `departamento`
 -- -----------------------------------------------------
 CREATE TABLE `departamento` (
@@ -71,10 +64,6 @@ CREATE TABLE `cuenta` (
     FOREIGN KEY (`id_sucursal_cuenta`) REFERENCES `sucursal` (`id_sucursal`)
 );
 
-ALTER TABLE `cuenta`
-	ADD column `id_usuario_cuenta` bigint(25),
-    ADD FOREIGN KEY (`id_usuario_cuenta`) REFERENCES `usuario`(`cedula`);
-
 -- -----------------------------------------------------
 -- Table `historial_cuenta`
 -- -----------------------------------------------------
@@ -122,3 +111,17 @@ CREATE TABLE `cdt` (
 	PRIMARY KEY (`numero_cuenta`),
     FOREIGN KEY (`numero_cuenta`) REFERENCES `bancoBoyaca`.`cuenta` (`numero_cuenta`)
 );
+
+-- -----------------------------------------------------
+-- Modificar Tabla "usuario"
+-- -----------------------------------------------------
+ALTER TABLE `usuario`
+	ADD column `id_municipio_usuario` INT,
+	ADD FOREIGN KEY (`id_municipio_usuario`) REFERENCES `municipio`(`id_municipio`);
+
+-- -----------------------------------------------------
+-- Modificar Tabla "cuenta"
+-- -----------------------------------------------------
+ALTER TABLE `cuenta`
+	ADD column `id_usuario_cuenta` bigint(25),
+    ADD FOREIGN KEY (`id_usuario_cuenta`) REFERENCES `usuario`(`cedula`);
