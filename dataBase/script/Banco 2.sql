@@ -119,9 +119,27 @@ ALTER TABLE `usuario`
 	ADD column `id_municipio_usuario` INT,
 	ADD FOREIGN KEY (`id_municipio_usuario`) REFERENCES `municipio`(`id_municipio`);
 
+
+ALTER TABLE `usuario`
+	ADD COLUMN `fecha_nacimiento` DATE,
+    ADD COLUMN `fehca_expedicion` DATE;
 -- -----------------------------------------------------
 -- Modificar Tabla "cuenta"
 -- -----------------------------------------------------
 ALTER TABLE `cuenta`
 	ADD column `id_usuario_cuenta` bigint(25),
     ADD FOREIGN KEY (`id_usuario_cuenta`) REFERENCES `usuario`(`cedula`);
+    
+-- -----------------------------------------------------
+-- Modificar Tabla "municipio"
+-- -----------------------------------------------------
+ALTER TABLE `MUNICIPIO`
+	DROP constraint `municipio_ibfk_1`,
+	DROP column `id_departamento_municipio`,
+    ADD COLUMN `nombre_departamento` varchar (45);
+
+-- -----------------------------------------------------
+-- ELIMINAR Tabla "departamento"
+-- -----------------------------------------------------
+
+DROP Table `departamento`;
