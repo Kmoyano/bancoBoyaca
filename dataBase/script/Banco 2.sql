@@ -123,6 +123,9 @@ ALTER TABLE `usuario`
 ALTER TABLE `usuario`
 	ADD COLUMN `fecha_nacimiento` DATE,
     ADD COLUMN `fehca_expedicion` DATE;
+    
+ALTER TABLE `usuario`
+	ADD COLUMN `estado` varchar(15);
 -- -----------------------------------------------------
 -- Modificar Tabla "cuenta"
 -- -----------------------------------------------------
@@ -143,3 +146,6 @@ ALTER TABLE `MUNICIPIO`
 -- -----------------------------------------------------
 
 DROP Table `departamento`;
+
+ALTER TABLE `sucursal`
+	ADD COLUMN `estado` varchar(15);

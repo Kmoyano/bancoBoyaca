@@ -30,7 +30,7 @@ class UsuarioDAO:
         cdb = conexion.conectarBD()
         cursor = cdb.cursor()
         cursor.execute(f"UPDATE usuario"
-                       f" SET nombre = {nombre}, apellido = {apellido}, direccion = {direccion}, telefono = {telefono},"
+                       f" SET nombre = {nombre}, apellidos = {apellido}, direccion = {direccion}, telefono = {telefono},"
                        f" correo = {correo}, contraseña = {contraseña}, rol = {rol}, fecha_nacimiento = {fechaNacimeinto},"
                        f" fecha_expedicion = {fechaExpedicion} WHERE cedula = \"{cedula}\"")
         cdb.commit()
