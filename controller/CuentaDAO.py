@@ -25,11 +25,15 @@ class CuentaDAO:
         return buscar
 
     def crearCuenta(self, numeroCuenta, idSucursal, saldo, fechaApertura, tasaInteres, ultimoMovimiento, idUsuario):
-        conexion = Conexion()
-        cdb = conexion.conectarBD()
-        cursor = cdb.cursor()
-        cursor.execute(f"INSERT INTO cuenta (numero_cuenta, id_sucursal_cuenta, saldo, fecha_apertura, tasa_interes,"
-                       f" ultimo_movimiento, id_usuario_cuenta) VALUES \"{numeroCuenta}\", \"{idSucursal}\", \"{saldo}\","
-                       f" \"{fechaApertura}\", \"{tasaInteres}\", \"{ultimoMovimiento}\", \"{idUsuario}\"")
-        cursor.commit()
+        try:
+            conexion = Conexion()
+            cdb = conexion.conectarBD()
+            cursor = cdb.cursor()
+            cursor.execute(f"INSERT INTO cuenta (numero_cuenta, id_sucursal_cuenta, saldo, fecha_apertura, tasa_interes,"
+                           f" ultimo_movimiento, id_usuario_cuenta) VALUES \"{numeroCuenta}\", \"{idSucursal}\", \"{saldo}\","
+                           f" \"{fechaApertura}\", \"{tasaInteres}\", \"{ultimoMovimiento}\", \"{idUsuario}\"")
+            cursor.commit()
+            return True
+        except Exception as e:
+            return False
 
