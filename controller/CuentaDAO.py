@@ -1,5 +1,3 @@
-
-
 from controller.Conexion import Conexion
 
 class CuentaDAO:
@@ -15,14 +13,23 @@ class CuentaDAO:
         lista = cursor.fetchone()
         return lista
 
-    def buscarCuenta(self, numeroCuenta):
+    def buscarCuenta(self, idUsuario):
         conexion = Conexion()
         cdb = conexion.conectarBD()
         cursor = cdb.cursor()
-        cursor.execute(f"SELECT numero_cuenta FROM cuenta WHERE numero_cuenta = \"{numeroCuenta}\"")
-        buscar = cursor.fetchone()
+        cursor.execute(f"SELECT numero_cuenta FROM cuenta WHERE id_usuario_cuenta = \"{idUsuario}\"")
+        buscar = cursor.fetchall()
 
-        if(buscar == numeroCuenta):
-            return True
-        return False
+        if(buscar == []):
+            return False
+        return buscar
+
+    def crearCuenta(self, numeroCuenta, idSucursal, saldo, fechaApertura, tasaInteres, ultimoMovimiento, idUsuario):
+        conexion = Conexion()
+        cdb = conexion.conectarBD()
+        cursor = cdb.cursor()
+        cursor.execute(f"INSERT INTO cuenta (numero_cuenta, id_sucursal_cuenta, saldo, fecha_apertura, tasa_interes,"
+                       f" ultimo_movimiento, id_usuario_cuenta) VALUES \"{numeroCuenta}\", \"{idSucursal}\", \"{saldo}\","
+                       f" \"{fechaApertura}\", \"{tasaInteres}\", \"{ultimoMovimiento}\", \"{idUsuario}\"")
+        cursor.commit()
 

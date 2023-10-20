@@ -1,18 +1,21 @@
 from controller.Conexion import Conexion
 
 
-class historialDAO:
+class HistorialDAO:
     def __init__(self):
         pass
 
     def crearHistorial(self, numeroCuenta, saldo, movimiento, fechaMovimiento, descripcion):
-        conexion = Conexion()
-        cdb = conexion.conectarBD()
-        cursor = cdb.cursor()
-        cursor.execute(f"INSERT INTO historial (id_numero_cuenta, saldo, movimiento, fecha_movimeinto, descripcion)"
+        try:
+            conexion = Conexion()
+            cdb = conexion.conectarBD()
+            cursor = cdb.cursor()
+            cursor.execute(f"INSERT INTO historial (id_numero_cuenta, saldo, movimiento, fecha_movimeinto, descripcion)"
                        f" VALUES (\"{numeroCuenta}\", \"{saldo}\", \"{movimiento}\", \"{fechaMovimiento}\", \"{descripcion}\")")
-        cdb.commit()
-        return True
+            cdb.commit()
+            return True
+        except Exception as e:
+            return False
 
     def consultarHistorial(self, numeroCuenta):
         conexion = Conexion()
