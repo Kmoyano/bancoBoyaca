@@ -2,6 +2,7 @@ import hashlib
 
 from controller.UsuarioDAO import UsuarioDAO
 
+
 class UsuarioDTO:
     def __init__(self, cedula, nombre, apellido, direccion, telefono, correo, contraeña, rol, idMunicipio,
                  fechaNacimiento, fechaExpedicion, estado):
@@ -11,57 +12,72 @@ class UsuarioDTO:
         self._direccion = direccion
         self._telefono = telefono
         self._correo = correo
-        self._contaseña = contraeña
+        self._contraseña = contraeña
         self._rol = rol
         self._idMunicipio = idMunicipio
         self._fechaNacimiento = fechaNacimiento
         self._fechaExpedicion = fechaExpedicion
         self._estado = estado
 
-
     def autenticarUsuarios(self):
         contraseña = self.encriptarContraseña()
+        self._contraseña = contraseña
 
-        usuario = UsuarioDAO.consultarUsuario(self._cedula, contraseña)
-        rolusuario = usuario[7]
-        if(rolusuario == "usuario"):
-            ## ir a vista usuario
-            pass
-        elif(rolusuario == "administrador"):
-            ## ir a Vista administrador
-            pass
-        ## mandar mensaje de no rol no encontrado
+        usuario = UsuarioDAO.consultarUsuario(self, self._cedula, self._contraseña)
 
+        if (usuario == None):
+            ## no hay usuario
+            print("No se encuentra")
+        else:
+            rolusuario = usuario[7]
+            if (rolusuario == "usuario"):
+                ## ir a vista usuario
+                print("Usuario")
+            elif (rolusuario == "administrador"):
+                ## ir a Vista administrador
+                print("Administrador")
+            else:
+                ## no se encuentra el rol
+                print("No se encuentra el rol")
 
     def crearUsuario(self):
         contraseña = self.encriptarContraseña()
 
-        usuario = UsuarioDAO.crearUsuario(self._cedula, self._nombre, self._apellido, self._direccion, self._telefono,
+        usuario = UsuarioDAO.crearUsuario(self, self._cedula, self._nombre, self._apellido, self._direccion,
+                                          self._telefono,
                                           self._correo, contraseña, self._rol, self._fechaNacimiento,
-                                        self._fechaExpedicion, self._estado, self._idMunicipio)
+                                          self._fechaExpedicion, self._estado, self._idMunicipio)
 
         if (usuario == True):
-            # ir a usuario se creo
-            pass
+            print("Si")
+        else:
+            print("No")
             # ir a usuario no se creo
 
     def deshavilitarUsuario(self):
-        usuario = UsuarioDAO.deshabilitarUsuario(self._cedula, self._estado)
+        usuario = UsuarioDAO.deshabilitarUsuario(self, self._cedula, self._estado)
         if (usuario == True):
-            # ir a usuario eliminado
-            pass
+            print("Si")
+        else:
+            print("No")
         # ir a usuario no actualizado
 
     def actualizarUsuario(self):
-        usuario = UsuarioDAO.actualizarUsuario(self._cedula, self._nombre, self._apellido, self._direccion, self._telefono,
-                                          self._correo, self._contaseña, self._rol, self._fechaNacimiento, self._fechaExpedicion)
+        contraseña = self.encriptarContraseña()
+
+        usuario = UsuarioDAO.actualizarUsuario(self, self._cedula, self._nombre, self._apellido, self._direccion,
+                                               self._telefono,
+                                               self._correo, contraseña, self._rol, self._fechaNacimiento,
+                                               self._fechaExpedicion)
 
         if (usuario == True):
             # ir a usuario eliminado
-            pass
-        # ir a usuario no actualizado
+            print("Si")
+        else:
+            # ir a usuario no actualizado
+            print("No")
 
     def encriptarContraseña(self):
-        contraseñaSTR = str(self._contaseña)
+        contraseñaSTR = str(self._contraseña)
         contrasenaeEncriptada = hashlib.sha256(contraseñaSTR.encode()).hexdigest()
         return contrasenaeEncriptada

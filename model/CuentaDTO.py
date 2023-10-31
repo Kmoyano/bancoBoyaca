@@ -7,4 +7,3 @@ class CuentaDTO:
         self._ultimoMovimiento = ultimoMovimiento
         self._idSucursal = idSucursal
         self._idUsuario = idUsuario
-

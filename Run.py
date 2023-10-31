@@ -1,5 +1,10 @@
-from controller.Control import Control
+from testCreado.TestUsuario import TestUsuario
+
+# if __name__ == "__main__":
+#    controller = Control()
+#    controller.run()
+
 
 if __name__ == "__main__":
-    controller = Control()
-    controller.run()
+    test = TestUsuario()
+    test.actualizar()

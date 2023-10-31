@@ -3,13 +3,13 @@ from controller.Conexion import Conexion
 
 class UsuarioDAO:
     def __init__(self):
-        pass
+        return
 
     def consultarUsuario(self, cedula, contraseña):
         conexion = Conexion()
         cdb = conexion.conectarBD()
         cursor = cdb.cursor()
-        cursor.execute(f"SELECT * FROM usuario WHERE cedula = \"{cedula}\" AND constaseña = \"{contraseña}\"")
+        cursor.execute(f"SELECT * FROM usuario WHERE cedula = \"{cedula}\" AND contrasena = \"{contraseña}\"")
         buscar = cursor.fetchone()
         return buscar
 
@@ -31,9 +31,9 @@ class UsuarioDAO:
             cdb = conexion.conectarBD()
             cursor = cdb.cursor()
             cursor.execute(f"UPDATE usuario"
-                           f" SET nombre = {nombre}, apellidos = {apellido}, direccion = {direccion}, telefono = {telefono},"
-                           f" correo = {correo}, contraseña = {contraseña}, rol = {rol}, fecha_nacimiento = {fechaNacimeinto},"
-                           f" fecha_expedicion = {fechaExpedicion} WHERE cedula = \"{cedula}\"")
+                           f" SET nombres = \"{nombre}\", apellidos = \"{apellido}\", direccion = \"{direccion}\", telefono = \"{telefono}\","
+                           f" correo = \"{correo}\", contrasena = \"{contraseña}\", rol = \"{rol}\", fecha_nacimiento = \"{fechaNacimeinto}\","
+                           f" fehca_expedicion = \"{fechaExpedicion}\" WHERE cedula = \"{cedula}\"")
             cdb.commit()
             return True
         except Exception as e:
@@ -59,8 +59,8 @@ class UsuarioDAO:
             cdb = conexion.conectarBD()
             cursor = cdb.cursor()
             cursor.execute(
-                f"INSERT INTO usuario (cedula, nombre, apellidos, direccion, telefono, correo, constraseña, rol,"
-                f" id_municipio_usuario, fecha_naciemiento, fecha_expedicion, estado)"
+                f"INSERT INTO usuario (cedula, nombres, apellidos, direccion, telefono, correo, contrasena, rol,"
+                f" id_municipio_usuario, fecha_nacimiento, fehca_expedicion, estado)"
                 f" VALUES (\"{cedula}\", \"{nombre}\", \"{apellido}\", \"{direccion}\", \"{telefono}\", \"{correo}\","
                 f" \"{contraseña}\", \"{rol}\", \"{idMunicipio}\", \"{fechaNacimiento}\", \"{fechaExpedicion}\", \"{estado}\")")
             cdb.commit()

@@ -1,18 +1,17 @@
 import os
 
 import uvicorn
-from fastapi import FastAPI, APIRouter, Request
+from fastapi import FastAPI, APIRouter
 from fastapi.staticfiles import StaticFiles
-from starlette.responses import RedirectResponse
 
 STATIC_PATH = os.path.abspath(os.path.join(os.getcwd(), "view/static"))
 print(STATIC_PATH)
+
 
 class Control:
     def __init__(self):
         self.app = FastAPI()
         self.router = APIRouter()
-
 
     def routers(self):
         pass
