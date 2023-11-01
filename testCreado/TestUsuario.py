@@ -18,10 +18,8 @@ class TestUsuario:
         self._fechaExpedicion = "2020-08-03"
         self._estado = "activo"
         self.usuario = UsuarioDTO(self._cedula, self._nombre, self._apellido, self._direccion, self._telefono,
-                                  self._correo,
-                                  self._contaseña, self._rol, self._idMunicipio, self._fechaNacimiento,
-                                  self._fechaExpedicion,
-                                  self._estado)
+                                  self._correo, self._contaseña, self._rol, self._idMunicipio, self._fechaNacimiento,
+                                  self._fechaExpedicion, self._estado)
 
     def autenticar(self):
         self.usuario.autenticarUsuarios()  ## PASS

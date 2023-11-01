@@ -3,7 +3,7 @@ from controller.Conexion import Conexion
 
 class SucursalDAO:
     def __init__(self):
-        pass
+        return
 
     def consultarSucursal(self, idSucursal):
         conexion = Conexion()
@@ -25,19 +25,18 @@ class SucursalDAO:
             return True
         return False
 
-    def crearSucursal(self, idSucursal, nombreSucursal, direccion, telefono):
+    def crearSucursal(self, idSucursal, nombreSucursal, direccion, telefono, idMunicipio, estado):
         try:
             conexion = Conexion()
             cdb = conexion.conectarBD()
             cursor = cdb.cursor()
             cursor.execute(
-                f"INSERT INTO sucursal (id_sucursal, nombre_sucursal, direccion, telefono, id_municipio_sucursal)"
-                f" VALUES (\"{idSucursal}\", \"{nombreSucursal}\", \"{direccion}\", \"{telefono}\")")
+                f"INSERT INTO sucursal (id_sucursal, nombre_sucursal, direccion, telefono, id_municipio_sucursal, estado)"
+                f" VALUES (\"{idSucursal}\", \"{nombreSucursal}\", \"{direccion}\", \"{telefono}\", \"{idMunicipio}\", \"{estado}\")")
             cdb.commit()
             return True
         except Exception as e:
             return False
-
 
     def deshabilitarSucursal(self, idSucursal, estado):
         try:
