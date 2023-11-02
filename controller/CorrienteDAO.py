@@ -1,8 +1,9 @@
 from controller.Conexion import Conexion
 
+
 class CorrienteDAO:
     def __init__(self):
-        pass
+        return
 
     def crearCorriente(self, numeroCuneta):
         try:
@@ -24,4 +25,5 @@ class CorrienteDAO:
 
         if (buscar == []):
             return False
-        return buscar
+        else:
+            return buscar

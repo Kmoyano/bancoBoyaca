@@ -23,8 +23,10 @@ class CDTDTO(CuentaDTO):
             CDT = CDTDAO.crearCDT(self._numeroCuenta, self._clausula, self._retencion, self._fechaFinalizacion,
                                   self._aproxInteres)
             if (CDT == True):
+                print(CDT)
                 return True
-        return False
+        else:
+            print("No")
 
     def calcularSinGuardarCDT(self):
         pass

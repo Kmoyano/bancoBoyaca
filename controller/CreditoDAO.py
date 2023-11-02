@@ -1,6 +1,7 @@
 from controller.Conexion import Conexion
 
-class CreditoDTO:
+
+class CreditoDAO:
     def __init__(self):
         pass
 
@@ -24,4 +25,5 @@ class CreditoDTO:
 
         if (buscar == []):
             return False
-        return buscar
+        else:
+            return buscar

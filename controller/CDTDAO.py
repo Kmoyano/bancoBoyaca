@@ -1,8 +1,9 @@
 from controller.Conexion import Conexion
 
+
 class CDTDAO:
     def __init__(self):
-        pass
+        return
 
     def crearCDT(self, numeroCuenta, clausula, retencion, fechaFinalizacion, aproxInteres):
         try:
@@ -26,4 +27,5 @@ class CDTDAO:
 
         if (buscar == []):
             return False
-        return buscar
+        else:
+            return buscar
