@@ -1,4 +1,4 @@
-from testCreado.TestSucursal import TestSucursal
+from testCreado.TestCorriente import TestCorriente
 
 # if __name__ == "__main__":
 #    controller = Control()
@@ -6,5 +6,5 @@ from testCreado.TestSucursal import TestSucursal
 
 
 if __name__ == "__main__":
-    test = TestSucursal()
-    test.actualizar()
+    test = TestCorriente()
+    test.consultar()

@@ -10,8 +10,8 @@ class CorrienteDAO:
             conexion = Conexion()
             cdb = conexion.conectarBD()
             cursor = cdb.cursor()
-            cursor.execute(f"INSERT INTO cuenta_corriente (numero_cuenta) VALUES = \"{numeroCuneta}\"")
-            cursor.commit()
+            cursor.execute(f"INSERT INTO cuenta_corriente (numero_cuenta) VALUES ('{numeroCuneta}')")
+            cdb.commit()
             return True
         except Exception as e:
             return False
@@ -20,7 +20,7 @@ class CorrienteDAO:
         conexion = Conexion()
         cdb = conexion.conectarBD()
         cursor = cdb.cursor()
-        cursor.execute(f"SELECT * FROM cuneta_corriente WHERE numero_cuenta = \"{numeroCuenta}\"")
+        cursor.execute(f"SELECT * FROM cuenta_corriente WHERE numero_cuenta = \"{numeroCuenta}\"")
         buscar = cursor.fetchone()
 
         if (buscar == []):

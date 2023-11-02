@@ -4,8 +4,9 @@ from model.CuentaDTO import CuentaDTO
 
 
 class CorrienteDTO(CuentaDTO):
-    def __init__(self, numeroCuenta, saldo, fechaApertura, tasaInteres, ultimoMovimiento):
-        CuentaDTO.__init__(self, numeroCuenta, saldo, fechaApertura, tasaInteres, ultimoMovimiento)
+    def __init__(self, numeroCuenta, saldo, fechaApertura, tasaInteres, ultimoMovimiento, idSucursal, idUsuario):
+        CuentaDTO.__init__(self, numeroCuenta, saldo, fechaApertura, tasaInteres, ultimoMovimiento, idSucursal,
+                           idUsuario)
 
     def crearCorriente(self):
         cuenta = CuentaDAO.crearCuenta(self, self._numeroCuenta, self._idSucursal, self._saldo, self._fechaApertura,
@@ -31,3 +32,7 @@ class CorrienteDTO(CuentaDTO):
 
     def consultarCorriente(self):
         cuenta = CuentaDAO.consultarCuenta(self, self._numeroCuenta)
+        if (cuenta == None):
+            print("No")
+        else:
+            print(cuenta)
