@@ -3,20 +3,20 @@ from controller.Conexion import Conexion
 
 class CreditoDAO:
     def __init__(self):
-        pass
+        return
 
     def crearCorriente(self, numeroCuneta):
         try:
             conexion = Conexion()
             cdb = conexion.conectarBD()
             cursor = cdb.cursor()
-            cursor.execute(f"INSERT INTO creditos (numero_cuenta) VALUES = \"{numeroCuneta}\"")
-            cursor.commit()
+            cursor.execute(f"INSERT INTO creditos (numero_cuenta) VALUES ('{numeroCuneta}')")
+            cdb.commit()
             return True
         except Exception as e:
             return False
 
-    def buscarCorriente(self, numeroCuenta):
+    def buscarCredito(self, numeroCuenta):
         conexion = Conexion()
         cdb = conexion.conectarBD()
         cursor = cdb.cursor()

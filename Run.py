@@ -1,4 +1,4 @@
-from testCreado.TestCorriente import TestCorriente
+from testCreado.TestCredito import TestCredito
 
 # if __name__ == "__main__":
 #    controller = Control()
@@ -6,5 +6,5 @@ from testCreado.TestCorriente import TestCorriente
 
 
 if __name__ == "__main__":
-    test = TestCorriente()
+    test = TestCredito()
     test.consultar()

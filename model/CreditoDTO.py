@@ -4,8 +4,9 @@ from model.CuentaDTO import CuentaDTO
 
 
 class CreditoDTO(CuentaDTO):
-    def __init__(self, numeroCuenta, saldo, fechaApertura, tasaInteres, ultimoMovimiento):
-        CuentaDTO.__init__(self, numeroCuenta, saldo, fechaApertura, tasaInteres, ultimoMovimiento, )
+    def __init__(self, numeroCuenta, saldo, fechaApertura, tasaInteres, ultimoMovimiento, idSucursal, idUsuario):
+        CuentaDTO.__init__(self, numeroCuenta, saldo, fechaApertura, tasaInteres, ultimoMovimiento, idSucursal,
+                           idUsuario)
 
     def crearCredito(self):
         cuenta = CuentaDAO.crearCuenta(self, self._numeroCuenta, self._idSucursal, self._saldo, self._fechaApertura,
@@ -22,7 +23,7 @@ class CreditoDTO(CuentaDTO):
             print("No hay cuentas creadas")
 
     def buscarCredito(self):
-        credito = CreditoDAO.buscarCorriente(self, self._numeroCuenta)
+        credito = CreditoDAO.buscarCredito(self, self._numeroCuenta)
         if (credito == False):
             # No se encuentra credito
             print("No")
