@@ -16,17 +16,19 @@ class CDTDTO(CuentaDTO):
         self._aproxInteres = aproxInteres
 
     def crearCDT(self):
-        cuenta = CuentaDAO.crearCuenta(self._numeroCuenta, self._idSucursal, self._saldo, self._fechaApertura,
-                                       self._tasaInteres,
-                                       self._ultimoMovimiento, self._idUsuario)
+        cuenta = CuentaDAO.crearCuenta(self, self._numeroCuenta, self._idSucursal, self._saldo, self._fechaApertura,
+                                       self._tasaInteres, self._ultimoMovimiento, self._idUsuario)
+
         if (cuenta == True):
-            CDT = CDTDAO.crearCDT(self._numeroCuenta, self._clausula, self._retencion, self._fechaFinalizacion,
+            CDT = CDTDAO.crearCDT(self, self._numeroCuenta, self._clausula, self._retencion, self._fechaFinalizacion,
                                   self._aproxInteres)
             if (CDT == True):
                 print(CDT)
                 return True
+            else:
+                print("No")
         else:
-            print("No")
+            print("No cuenta")
 
     def calcularSinGuardarCDT(self):
         pass

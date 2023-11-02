@@ -1,4 +1,4 @@
-from testCreado.TestCredito import TestCredito
+from testCreado.TestCDT import TestCDT
 
 # if __name__ == "__main__":
 #    controller = Control()
@@ -6,5 +6,5 @@ from testCreado.TestCredito import TestCredito
 
 
 if __name__ == "__main__":
-    test = TestCredito()
-    test.consultar()
+    test = TestCDT()
+    test.crear()

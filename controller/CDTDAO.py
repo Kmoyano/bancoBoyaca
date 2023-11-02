@@ -11,9 +11,9 @@ class CDTDAO:
             cdb = conexion.conectarBD()
             cursor = cdb.cursor()
             cursor.execute(f"INSERT INTO cdt (numero_cuenta, clausula, retencion, fecha_finalizacion, aprox_interes)"
-                           f" VALUES = \"{numeroCuenta}\", \"{clausula}\", \"{retencion}\", \"{fechaFinalizacion}\","
-                           f" \"{aproxInteres}\"")
-            cursor.commit()
+                           f" VALUES (\"{numeroCuenta}\", \"{clausula}\", \"{retencion}\", \"{fechaFinalizacion}\","
+                           f" \"{aproxInteres}\")")
+            cdb.commit()
             return True
         except Exception as e:
             return False
